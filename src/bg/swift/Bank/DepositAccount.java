@@ -6,12 +6,14 @@ public class DepositAccount extends Accounts {
         super(IBAN, ownerType, balance, monthlyInterestRate, monthlyPeriod);
     }
 
+
+
     @Override
     public double getInterestRate() {
         return getMonthlyInterestRate()*getMonthlyPeriod()*getBalance();
     }
 
-    public static double withdrawMoney(double balance, double desiredAmount) {
-        return balance - desiredAmount;
+    public double withdrawMoney(double desiredAmount) {
+        return balance-=desiredAmount;
     }
 }
