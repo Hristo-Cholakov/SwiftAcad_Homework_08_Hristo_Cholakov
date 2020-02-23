@@ -19,6 +19,8 @@ public abstract class Accounts {
         return IBAN;
     }
 
+
+
     public String getOwnerType() {
         return ownerType;
     }
@@ -36,4 +38,7 @@ public abstract class Accounts {
     }
 
     public abstract double getInterestRate();
+    public double investMoney(double desiredAmount) {
+        return balance + desiredAmount;
+    }
 }

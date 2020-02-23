@@ -16,4 +16,6 @@ public class LoanAccount extends Accounts {
             return getMonthlyInterestRate()*getMonthlyPeriod()*getBalance();
         }
     }
+
+
 }

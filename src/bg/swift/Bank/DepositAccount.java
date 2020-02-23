@@ -10,4 +10,8 @@ public class DepositAccount extends Accounts {
     public double getInterestRate() {
         return getMonthlyInterestRate()*getMonthlyPeriod()*getBalance();
     }
+
+    public static double withdrawMoney(double balance, double desiredAmount) {
+        return balance - desiredAmount;
+    }
 }
