@@ -2,43 +2,59 @@ package bg.swift.Bank;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Task2_Bank {
-   static NumberFormat numberFormat = new DecimalFormat("00000000");
-   private static int IBAN = 1;
+    static NumberFormat numberFormat = new DecimalFormat("00000000");
+    private static int IBAN = 1;
 
 
     public static void main(String[] args) {
         final String END_OPERATOR = "END";
 
         Scanner scanner = new Scanner(System.in);
-        String currentLine = scanner.nextLine();
+        ArrayList<Object> loanAccounts = new ArrayList<>();
+        ArrayList<Object> depositAccounts = new ArrayList<>();
 
+        while (!END_OPERATOR.equals(scanner)) {
+            String[] captureInput = scanner.nextLine().split(" ");
 
-        while (!END_OPERATOR.equals(currentLine)) {
-            System.out.println("Enter values here:");
-            String[]captureInput = scanner.nextLine().split(" ");
-            System.out.println("yt");
-            if (captureInput[0].equalsIgnoreCase("open") && captureInput[2].equals(1)) {
+            if (captureInput[0].equalsIgnoreCase("open") && captureInput[3].equals("1")) {
                 DepositAccount depositAccount = new DepositAccount(captureInput[1], Integer.parseInt(captureInput[2]),
                         Integer.parseInt(captureInput[3]), Double.parseDouble(captureInput[4]),
-                        Double.parseDouble(captureInput[5]));
-                System.out.println("test");
+                        Double.parseDouble(captureInput[5]), IBAN);
+                System.out.println(numberFormat.format(depositAccount.getIBAN()));
+                incIBAN();
+                depositAccounts.add(depositAccount);
+            }
+            if (captureInput[0].equalsIgnoreCase("open") && captureInput[3].equals("2")) {
+                LoanAccount loanAccount = new LoanAccount(captureInput[1], Integer.parseInt(captureInput[2]),
+                        Integer.parseInt(captureInput[3]), Double.parseDouble(captureInput[4]),
+                        Double.parseDouble(captureInput[5]), IBAN);
+                System.out.println(numberFormat.format(loanAccount.getIBAN()));
+                incIBAN();
+            }
+            if (captureInput[0].equalsIgnoreCase("open") && captureInput[3].equals("3")) {
+                MortgageAccount mortgageAccount = new MortgageAccount(captureInput[1], Integer.parseInt(captureInput[2]),
+                        Integer.parseInt(captureInput[3]), Double.parseDouble(captureInput[4]),
+                        Double.parseDouble(captureInput[5]), IBAN);
+                System.out.println(numberFormat.format(mortgageAccount.getIBAN()));
+                incIBAN();
+            }
 
+            if (depositAccounts.contains(captureInput[1]) && captureInput[0].equalsIgnoreCase("put")) {
+                DepositAccount.
             }
 
         }
 
 
-//
-
-
     }
 
-    public static void getIBAN() {
-        System.out.println(numberFormat.format(IBAN));
+    public static void incIBAN() {
         IBAN++;
     }
+
 
 }

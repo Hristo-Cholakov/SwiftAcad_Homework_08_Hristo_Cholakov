@@ -11,12 +11,14 @@ public abstract class Accounts {
     public static int monthlyPeriod;
 
 
-    public Accounts(String customerName, int customerType, int accountType, double balance, double monthlyInterestRate) {
+    public Accounts(String customerName, int customerType, int accountType, double balance,
+                    double monthlyInterestRate, int IBAN) {
         this.customerName = customerName;
         this.customerType = customerType;
         this.accountType = accountType;
         this.balance = balance;
         this.monthlyInterestRate = monthlyInterestRate;
+        this.IBAN = IBAN;
     }
 
     public int getCustomerType() {
