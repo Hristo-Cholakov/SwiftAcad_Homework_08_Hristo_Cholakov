@@ -2,15 +2,13 @@ package bg.swift.Bank;
 
 public class DepositAccount extends Accounts {
 
-    public DepositAccount(int IBAN, String ownerType, double balance, double monthlyInterestRate, int monthlyPeriod) {
-        super(IBAN, ownerType, balance, monthlyInterestRate, monthlyPeriod);
+    public DepositAccount(String customerName, int customerType, int accountType, double balance, double monthlyInterestRate) {
+        super(customerName, customerType, accountType, balance, monthlyInterestRate);
     }
-
-
 
     @Override
     public double getInterestRate() {
-        return getMonthlyInterestRate()*getMonthlyPeriod()*getBalance();
+        return getMonthlyInterestRate()*monthlyPeriod*getBalance();
     }
 
     public double withdrawMoney(double desiredAmount) {

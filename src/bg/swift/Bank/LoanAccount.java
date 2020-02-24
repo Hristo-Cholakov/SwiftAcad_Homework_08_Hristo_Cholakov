@@ -2,18 +2,19 @@ package bg.swift.Bank;
 
 public class LoanAccount extends Accounts {
 
-    public LoanAccount(int IBAN, String ownerType, double balance, double monthlyInterestRate, int monthlyPeriod) {
-        super(IBAN, ownerType, balance, monthlyInterestRate, monthlyPeriod);
+
+    public LoanAccount(String customerName, int customerType, int accountType, double balance, double monthlyInterestRate) {
+        super(customerName, customerType, accountType, balance, monthlyInterestRate);
     }
 
     @Override
     public double getInterestRate() {
-        if (getMonthlyPeriod() <= 3 && getOwnerType().toUpperCase().contains("individual")) {
-            return 0;
-        } else if (getMonthlyPeriod() <= 2 && getOwnerType().toUpperCase().contains("company")) {
-            return 0;
+        if (monthlyPeriod <= 3 && getCustomerType()==1) {
+            return monthlyPeriod*balance;
+        } else if (monthlyPeriod <= 2 && getCustomerType()==2) {
+            return monthlyPeriod*balance;
         } else {
-            return getMonthlyInterestRate()*getMonthlyPeriod()*getBalance();
+            return getMonthlyInterestRate()*monthlyPeriod*getBalance();
         }
     }
 

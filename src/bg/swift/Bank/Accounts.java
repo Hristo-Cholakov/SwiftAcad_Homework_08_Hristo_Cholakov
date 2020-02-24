@@ -1,64 +1,42 @@
 package bg.swift.Bank;
 
 public abstract class Accounts {
+    private String customerName;
+    private int customerType;
+    private int accountType;
     private int IBAN;
-    private String ownerType;
     public double balance;
     private double monthlyInterestRate;
-    int monthlyPeriod;
-//    private String customerName;
-//    private int customerType;
+    //private String ownerType;
+    public static int monthlyPeriod;
 
-    public Accounts(int IBAN, String ownerType, double balance, double monthlyInterestRate, int monthlyPeriod) {
-        this.IBAN = IBAN;
-        this.ownerType = ownerType;
+
+    public Accounts(String customerName, int customerType, int accountType, double balance, double monthlyInterestRate) {
+        this.customerName = customerName;
+        this.customerType = customerType;
+        this.accountType = accountType;
         this.balance = balance;
         this.monthlyInterestRate = monthlyInterestRate;
-        this.monthlyPeriod = monthlyPeriod;
     }
 
+    public int getCustomerType() {
+        return customerType;
+    }
 
+    public int getAccountType() {
+        return accountType;
+    }
 
     public int getIBAN() {
         return IBAN;
-    }
-
-
-
-    public String getOwnerType() {
-        return ownerType;
-    }
-
-    public double getBalance() {
-        return balance;
     }
 
     public double getMonthlyInterestRate() {
         return monthlyInterestRate;
     }
 
-    public int getMonthlyPeriod() {
-        return monthlyPeriod;
-    }
-
-    public void setIBAN(int IBAN) {
-        this.IBAN = IBAN;
-    }
-
-    public void setOwnerType(String ownerType) {
-        this.ownerType = ownerType;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public void setMonthlyInterestRate(double monthlyInterestRate) {
-        this.monthlyInterestRate = monthlyInterestRate;
-    }
-
-    public void setMonthlyPeriod(int monthlyPeriod) {
-        this.monthlyPeriod = monthlyPeriod;
+    public double getBalance() {
+        return balance;
     }
 
     public abstract double getInterestRate();
