@@ -12,21 +12,22 @@ public class Task2_Bank {
 
     public static void main(String[] args) {
         final String END_OPERATOR = "END";
+        DepositAccount depositAccount = new DepositAccount();
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Object> loanAccounts = new ArrayList<>();
-        ArrayList<Object> depositAccounts = new ArrayList<>();
+//        ArrayList<Object> loanAccounts = new ArrayList<>();
+//        ArrayList<Object> depositAccounts = new ArrayList<>();
 
         while (!END_OPERATOR.equals(scanner)) {
             String[] captureInput = scanner.nextLine().split(" ");
 
             if (captureInput[0].equalsIgnoreCase("open") && captureInput[3].equals("1")) {
-                DepositAccount depositAccount = new DepositAccount(captureInput[1], Integer.parseInt(captureInput[2]),
+                depositAccount = new DepositAccount(captureInput[1], Integer.parseInt(captureInput[2]),
                         Integer.parseInt(captureInput[3]), Double.parseDouble(captureInput[4]),
                         Double.parseDouble(captureInput[5]), IBAN);
                 System.out.println(numberFormat.format(depositAccount.getIBAN()));
                 incIBAN();
-                depositAccounts.add(depositAccount);
+//                depositAccounts.add(depositAccount);
             }
             if (captureInput[0].equalsIgnoreCase("open") && captureInput[3].equals("2")) {
                 LoanAccount loanAccount = new LoanAccount(captureInput[1], Integer.parseInt(captureInput[2]),
@@ -43,7 +44,8 @@ public class Task2_Bank {
                 incIBAN();
             }
 
-            if (depositAccounts.contains(captureInput[1]) && captureInput[0].equalsIgnoreCase("put")) {
+            if (captureInput[0].equalsIgnoreCase("put") &&
+                    (captureInput[1].equals(depositAccount.getIBAN()) || captureInput[1].equals(depositAccount.getCustomerName()))) {
                 DepositAccount.
             }
 

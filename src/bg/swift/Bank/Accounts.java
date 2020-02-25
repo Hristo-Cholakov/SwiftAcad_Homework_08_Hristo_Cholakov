@@ -10,6 +10,8 @@ public abstract class Accounts {
     //private String ownerType;
     public static int monthlyPeriod;
 
+    public Accounts() {
+    }
 
     public Accounts(String customerName, int customerType, int accountType, double balance,
                     double monthlyInterestRate, int IBAN) {
@@ -19,6 +21,10 @@ public abstract class Accounts {
         this.balance = balance;
         this.monthlyInterestRate = monthlyInterestRate;
         this.IBAN = IBAN;
+    }
+
+    public String getCustomerName() {
+        return customerName;
     }
 
     public int getCustomerType() {

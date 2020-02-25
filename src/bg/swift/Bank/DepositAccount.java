@@ -7,6 +7,9 @@ public class DepositAccount extends Accounts {
         super(customerName, customerType, accountType, balance, monthlyInterestRate, IBAN);
     }
 
+    public DepositAccount() {
+    }
+
     @Override
     public double getInterestRate() {
         return getMonthlyInterestRate()*monthlyPeriod*getBalance();
